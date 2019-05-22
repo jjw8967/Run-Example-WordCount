@@ -68,17 +68,17 @@ capacity-scheduler.xml
 ```
 mapred-site.xml
 
+* Update yarn configuration
 
 ```shell
 yarn rmadmin -refreshQueues
 ```
-Update yarn configuration
 
+* Check queues
 
 ```shell
 hadoop queue =list
 ```
-Check queues
 
 
 
