@@ -36,3 +36,49 @@ hadoop jar <JAR_FILE> <CLASS_NAME> <HDFS_INPUT_DIRECTORY> <HDFS_OUTPUT_DIRECTORY
 hdfs dfs -cat /user/jinu/output/*
 ```
 
+## Submitting Jobs to Queues
+
+```xml
+<property>
+<name>yarn.scheduler.capacity.root.queues</name>
+<value>prod,dev</value>
+</property>
+<property>
+<name>yarn.scheduler.capacity.root.dev.capacity</name>
+<value>60</value>
+</property>
+<property>
+<name>yarn.scheduler.capacity.root.dev.maximum-capacity</name>
+<value>75</value>
+</property>
+<property>
+<name>yarn.scheduler.capacity.root.prod.capacity</name>
+<value>40</value>
+</property>
+```
+capacity-scheduler.xml
+
+
+```xml
+...
+<property>
+<name>mapreduce.job.queuename</name>
+<value>dev</value>
+</property>
+```
+mapred-site.xml
+
+
+```shell
+yarn rmadmin -refreshQueues
+```
+Update yarn configuration
+
+
+```shell
+hadoop queue =list
+```
+Check queues
+
+
+
